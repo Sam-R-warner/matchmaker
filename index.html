@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Sam's Matchmaker 2025</title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Matchmaker.css">
+  <script src="Matchmaker.script"></script>
+  <title>Sam's Matchmaker 2025</title>
+</head>
   <body>
-    <h1>Matchmaker</h1>
-      <p>Instructions</p>
-    <label>Jazz is the best genre music there is</label><br />
+    <div class="container">
+      <header class="main-info">
+        <h1>Matchmaker</h1>
+        <h2>Instructions</h2>
+        <p1>Answer each question with one of the five options provided that best suit your opinion of the question asked.</p1><br /><br />
+      </header>
+
+    <section class="Questions">
+      <label>Jazz is the best genre music there is the best?</label><br />
     <select id="q1">
         <option value="5">Strongly Agree</option>
         <option value="4">Agree</option>
@@ -15,7 +25,8 @@
         <option value="1">Strongly Disagree</option>
     </select>
 <br /><br />
-    <label>Video games are really cool</label><br />
+
+    <label>Video games are really cool?</label><br />
     <select id="q2">
         <option value="5">Strongly Agree</option>
         <option value="4">Agree</option>
@@ -24,5 +35,39 @@
         <option value="1">Strongly Disagree</option>
     </select>
 <br /><br />
+
+<label>History books are really cool to read?</label><br />
+<select id="q3">
+    <option value="5">Strongly Agree</option>
+    <option value="4">Agree</option>
+    <option value="3">Neither agree nor disagree</option>
+    <option value="2">Disagree</option>
+    <option value="1">Strongly Disagree</option>
+</select>
+<br /><br />
+
+<label>Playing sports is cool?</label><br />
+<select id="q4">
+    <option value="5">Strongly Agree</option>
+    <option value="4">Agree</option>
+    <option value="3">Neither agree nor disagree</option>
+    <option value="2">Disagree</option>
+    <option value="1">Strongly Disagree</option>
+</select>
+<br /><br />
+
+<label>Coding is fun?</label><br />
+<select id="q5">
+    <option value="5">Strongly Agree</option>
+    <option value="4">Agree</option>
+    <option value="3">Neither agree nor disagree</option>
+    <option value="2">Disagree</option>
+    <option value="1">Strongly Disagree</option>
+</select>
+<br /><br />
+  <button onclick="calculateCompatibility()">Calculate Compatibility</button>
+  <p id="compatibility"></p>
+    </section>
+    </div>
   </body>
 </html>
