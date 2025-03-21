@@ -10,14 +10,17 @@
     <div class="container">
       <header class="main-info">
         <h1>Sam's Matchmaker 2025</h1>
-        <h2>Instructions</h2>
-        <p>Answer each question with one of the five options provided that best suit your opinion of the question asked.</p><br><br>
+        <h2>This Matchmaker helps figure t if you and I are meant for each other,
+          or just friends. You will answer 5 questions. For each question, select 5 if you strongly agree,
+          4 if you agree, 3 if you neither agree nor disagree, 2 if you disagree, and 1 if you strongly disagree.</h2>
+        <h2>Could you be my potential match? Let's find out!</h2>
       </header>
       <header>
       <div class="Questions">
     <form>
-    <label for="q1">Jazz is the best music genre.</label><br>
+    <label for="q1">Jazz is the best music genre</label><br>
     <select id="q1" name="jazz_opinion">
+        <option value="0"></option>
         <option value="5">Strongly Agree</option>
         <option value="4">Agree</option>
         <option value="3">Neither agree nor disagree</option>
@@ -27,8 +30,9 @@
     </form>
 <br><br>
     <form>
-    <label for="q2">Video games are really cool?</label><br>
+    <label for="q2">Video games are really cool</label><br>
     <select id="q2" name="Video_games_opinion">
+        <option value="0"></option>
         <option value="5">Strongly Agree</option>
         <option value="4">Agree</option>
         <option value="3">Neither agree nor disagree</option>
@@ -38,8 +42,9 @@
     </form>
 <br><br>
     <form>
-    <label for="q3">History books are really cool to read?</label><br>
+    <label for="q3">History books are really cool to read</label><br>
     <select id="q3" name="History_books_opinion">
+        <option value="0"></option>
         <option value="5">Strongly Agree</option>
         <option value="4">Agree</option>
         <option value="3">Neither agree nor disagree</option>
@@ -49,8 +54,9 @@
     </form>
 <br><br>
     <form>
-    <label for="q4">Playing sports is cool?</label><br>
+    <label for="q4">Playing sports is cool</label><br>
     <select id="q4" name="Playing_sports_opinion">
+        <option value="0"></option>
         <option value="5">Strongly Agree</option>
         <option value="4">Agree</option>
         <option value="3">Neither agree nor disagree</option>
@@ -60,8 +66,9 @@
     </form>
 <br><br>
     <form>
-    <label for="q5">Coding is fun?</label><br>
+    <label for="q5">Coding is fun</label><br>
     <select id="q5" name="Coding_opinion">
+        <option value="0"></option>
         <option value="5">Strongly Agree</option>
         <option value="4">Agree</option>
         <option value="3">Neither agree nor disagree</option>
@@ -70,8 +77,10 @@
     </select>
     </form>
 <br><br>
-  <button onclick="calculateCompatibility()">Calculate Compatibility</button>
+  <button type="button" onclick="calculateCompatibility()">Calculate Compatibility</button>
   <p id="compatibility"></p>
+  <p id="compatibilityMessage"></p>
+  <p id="errorMessage"></p>
     </div>
     </header>
     </div>

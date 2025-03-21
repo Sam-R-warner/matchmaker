@@ -1,66 +1,74 @@
 console.log("Starting Matchmaker Lite...");
-
 function calculateCompatibility() {
   console.log("calculatingCompatibility()");
-
+  if (!validate()) {
+    return;
+}
     const DESIRED_RESPONSE = [
+        0,
         5,  /* Strongly Agree */
         4,  /* Agree */
         3,  /* Neither agree nor disagree */
         2,  /* Disagree */
         1,  /* Strongly Disagree */
     ];
-
     const MAX_SCORE = 25;
+    const TOTAL_QUESTIONS = 5;
+    let totalCompatibility = 0;
 
-    let question1Response = document.getElementById("q1").selectedOptions[0].value;
-    let question2Response = document.getElementById("q2").selectedOptions[0].value;
-    let question3Response = document.getElementById("q3").selectedOptions[0].value;
-    let question4Response = document.getElementById("q4").selectedOptions[0].value;
-    let question5Response = document.getElementById("q5").selectedOptions[0].value;
+    for (let i= 1; i <= TOTAL_QUESTIONS; i++) {
+      let questionResponse = document.getElementById("q"+i).selectedOptions[0].value;
+      let responseText = document.getElementById("q"+i).selectedOptions[0].text;
 
-    console.log("Question 1 Answers:");
-    console.log(document.getElementById("q1").selectedOptions[0].text);
-    console.log(document.getElementById("q1").selectedOptions[0].value);
-    console.log(question1Response);
+      let desiredValue = DESIRED_RESPONSE[i === 3 || i === 5 ? 2 : 0];
+     
+      let compatibility = 5 - Math.abs(questionResponse - desiredValue);
+      totalCompatibility += compatibility;
 
-    console.log("Question 2 Answers:");
-    console.log(document.getElementById("q2").selectedOptions[0].text);
-    console.log(document.getElementById("q2").selectedOptions[0].value);
-    console.log(question2Response);
-
-    console.log("Question 3 Answers:");
-    console.log(document.getElementById("q3").selectedOptions[0].text);
-    console.log(document.getElementById("q3").selectedOptions[0].value);
-    console.log(question3Response);
-
-    console.log("Question 4 Answers:");
-    console.log(document.getElementById("q4").selectedOptions[0].text);
-    console.log(document.getElementById("q4").selectedOptions[0].value);
-    console.log(question4Response);
-
-    console.log("Question 5 Answers:");
-    console.log(document.getElementById("q5").selectedOptions[0].text);
-    console.log(document.getElementById("q5").selectedOptions[0].value);
-    console.log(question5Response);
-
-    let question1Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[0])
-    let question2Compatibility = 5 - Math.abs(question2Response - DESIRED_RESPONSE[0])
-    let question3Compatibility = 5 - Math.abs(question3Response - DESIRED_RESPONSE[2])
-    let question4Compatibility = 5 - Math.abs(question4Response - DESIRED_RESPONSE[0])
-    let question5Compatibility = 5 - Math.abs(question5Response - DESIRED_RESPONSE[2])
-
-    console.log("c1="+question1Compatibility);
-    console.log("c2="+question2Compatibility);
-    console.log("c3="+question3Compatibility);
-    console.log("c4="+question4Compatibility);
-    console.log("c5="+question5Compatibility);
-
-    let totalCompatibility = (question1Compatibility + question2Compatibility + question3Compatibility + question4Compatibility + question5Compatibility);
-
-    totalCompatibility *= 100 / MAX_SCORE
-    totalCompatibility = Math.round(totalCompatibility)
-    console.log("totalCompatibility="+ totalCompatibility);
-
-  document.getElementById("compatibility").innerHTML = "Your compatibility is: " + totalCompatibility;
+      console.log("Question: " + document.querySelector(`label[for="q${i}"]`).innerHTML);
+      console.log("Text: " + responseText);
+      console.log("Value: " + questionResponse);
+      console.log("Compatibility Score: " + compatibility);
+    }
+        totalCompatibility = Math.round((totalCompatibility / MAX_SCORE) * 100);
+        console.log("Total Compatibility = " + totalCompatibility);
+        document.getElementById("compatibility").innerHTML = "Your compatibility is: " + totalCompatibility;
+        displayCompatibilityMessage(totalCompatibility);
+}
+function validate() {
+  let isValid = true;
+  let errorMessage = "";
+  const TOTAL_QUESTIONS = 5;
+  for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+      let questionElement = document.getElementById(`q${i}`);
+      if (!questionElement || questionElement.value === "0") {
+          isValid = false;
+          let questionLabel = document.querySelector(`label[for="q${i}"]`)?.innerText || `Question ${i}`;
+          errorMessage += `"${questionLabel}" is unanswered.\n`;
+      }
+  }
+  if (!isValid) {
+      console.log("Validation failed:");
+      console.log(errorMessage);
+      document.getElementById("errorMessage").innerHTML = errorMessage.replace(/\n/g, " Please select an answer for all questions.");
+  } else {
+      document.getElementById("errorMessage").innerHTML = "";
+  }
+  return isValid;
+}
+function displayCompatibilityMessage(totalCompatibility) {
+  let message = "";
+      if (totalCompatibility >= 99) {
+          message = "You're perfect, wanna get married?";
+      }else if (totalCompatibility >= 80) {
+          message = "Wanna go out?";
+      } else if (totalCompatibility >= 60) {
+          message = "I'm interested, wanna chat?";
+      } else if (totalCompatibility >= 40) {
+          message = "I'll think about it, wanna be friends?";
+      } else {
+          message = "Let's just be friends.";
+      }
+    console.log(message);
+  document.getElementById("compatibilityMessage").innerHTML = message;
 }

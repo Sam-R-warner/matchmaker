@@ -1,6 +1,7 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: auto;
+    background-color: #ffffff;
     line-height: 1.6;
 }
 body {
@@ -14,19 +15,18 @@ body {
     margin: auto;
 }
 .main-info {
-    background: #333;
+    background: #f44cad;
     color: #fff;
     padding: 20px;
-    opacity: 0.9;
 }
 .main-info h1 {
     margin: 0;
 }
 .Questions {
-    background: #504848;
+    background: #f295cb;
+    color: #000000;
     padding: 10px;
     margin-top: 20px;
-    opacity: 0.9;
 }
 .center {
         display: block;
